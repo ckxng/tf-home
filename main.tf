@@ -1,6 +1,9 @@
 provider "oci" {
-  auth = "InstancePrincipal"
-  region = var.region
+  region = var.region_key
+  tenancy_ocid = var.tenancy_ocid
+  user_ocid = var.user_ocid
+  private_key = var.private_key
+  fingerprint = var.key_fingerprint
 }
 
 resource "oci_core_instance" "generated_oci_core_instance" {
@@ -26,27 +29,27 @@ resource "oci_core_instance" "generated_oci_core_instance" {
     recovery_action = "RESTORE_INSTANCE"
   }
   availability_domain = var.availability_domain
-  compartment_id      = vars.tenancy_OCID
+  compartment_id      = var.tenancy_ocid
   create_vnic_details {
     assign_private_dns_record = "true"
     assign_public_ip          = "true"
-    subnet_id                 = var.subnet_id
+    subnet_id                 = var.subnet_ocid
   }
-  display_name        = format("%s%02d", var.cluster_node_name_prefix, count.index)
+  display_name = format("%s%02d", var.cluster_node_name_prefix, count.index)
   instance_options {
     are_legacy_imds_endpoints_disabled = "false"
   }
-  metadata            = {
+  metadata = {
     "ssh_authorized_keys" = var.ssh_authorized_keys
   }
-  shape               = "VM.Standard.A1.Flex"
+  shape = "VM.Standard.A1.Flex"
   shape_config {
     memory_in_gbs = var.memory_in_gbs
     ocpus         = var.ocpus
   }
   source_details {
     # Ubuntu 20.04
-    source_id   = var.image_source_OCID
+    source_id   = var.image_source_ocid
     source_type = "image"
   }
 }

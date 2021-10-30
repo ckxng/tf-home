@@ -1,12 +1,12 @@
-variable "tenancy_OCID" {
+variable "tenancy_ocid" {
   type    = string
 }
 
-variable "compartment_OCID" {
+variable "compartment_ocid" {
   type    = string
 }
 
-variable "user_OCID" {
+variable "user_ocid" {
   type    = string
 }
 
@@ -18,9 +18,9 @@ variable "private_key" {
   type    = string
 }
 
-variable "region" {
+variable "region_key" {
   type    = string
-  default = "us-phoenix-1"
+  default = "phx"
 }
 
 variable "availability_domain" {
@@ -38,7 +38,7 @@ variable "instance_count" {
   default = 3
 }
 
-variable "image_source_OCID" {
+variable "image_source_ocid" {
   type    = string
   default = "ocid1.image.oc1.phx.aaaaaaaa3nsfzlvkvrfug4xby77srfr43iinfkw3clur5izvlnqtxqdyj5sq" # Ubuntu 20.4
 }
@@ -53,7 +53,7 @@ variable "ocpus" {
   default = "1"
 }
 
-variable "subnet_id" {
+variable "subnet_ocid" {
   type    = string
 }
 
