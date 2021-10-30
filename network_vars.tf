@@ -19,11 +19,6 @@ variable "vcn_cidr_blocks" {
   default = ["10.0.0.0/16"]
 }
 
-variable "vcn_is_ipv6enabled" {
-  type    = bool
-  default = true
-}
-
 variable "create_subnet" {
   type    = bool
   default = true
@@ -43,4 +38,10 @@ variable "subnet_dns_label" {
 variable "subnet_cidr_block" {
   type    = string
   default = "10.0.0.0/24"
+}
+
+variable "subnet_ipv6_subnet" {
+  description = "The two character portion of the subnet between /56 and /64.  This is the XX in AAAA:BBBB:CCCC:DDXX::/64.  This MUST be a two character string between 00 and ff."
+  type        = string
+  default     = "00"
 }
