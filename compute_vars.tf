@@ -1,28 +1,3 @@
-variable "tenancy_ocid" {
-  type    = string
-}
-
-variable "compartment_ocid" {
-  type    = string
-}
-
-variable "user_ocid" {
-  type    = string
-}
-
-variable "key_fingerprint" {
-  type    = string
-}
-
-variable "private_key" {
-  type    = string
-}
-
-variable "region_key" {
-  type    = string
-  default = "phx"
-}
-
 variable "availability_domain" {
   type    = string
   default = "hoEM:PHX-AD-2"
@@ -53,10 +28,6 @@ variable "ocpus" {
   default = "1"
 }
 
-variable "subnet_ocid" {
-  type    = string
-}
-
 variable "ssh_authorized_keys" {
-  type    = string
+  type = string
 }

@@ -1,12 +1,4 @@
-provider "oci" {
-  region = var.region_key
-  tenancy_ocid = var.tenancy_ocid
-  user_ocid = var.user_ocid
-  private_key = var.private_key
-  fingerprint = var.key_fingerprint
-}
-
-resource "oci_core_instance" "generated_oci_core_instance" {
+resource "oci_core_instance" "cluster_instances" {
   count = var.instance_count
 
   agent_config {
@@ -29,20 +21,22 @@ resource "oci_core_instance" "generated_oci_core_instance" {
     recovery_action = "RESTORE_INSTANCE"
   }
   availability_domain = var.availability_domain
-  compartment_id      = var.tenancy_ocid
+  compartment_id      = var.create_compartment ? oci_identity_compartment.compartment[0].id : var.compartment_ocid
   create_vnic_details {
+    display_name              = format("%s%02d", var.cluster_node_name_prefix, count.index)
+    hostname_label            = format("%s%02d", var.cluster_node_name_prefix, count.index)
     assign_private_dns_record = "true"
     assign_public_ip          = "true"
-    subnet_id                 = var.subnet_ocid
+    subnet_id                 = var.create_subnet ? oci_core_subnet.cluster_subnet[0].id : var.subnet_ocid
   }
-  display_name = format("%s%02d", var.cluster_node_name_prefix, count.index)
+  display_name        = format("%s%02d", var.cluster_node_name_prefix, count.index)
   instance_options {
     are_legacy_imds_endpoints_disabled = "false"
   }
-  metadata = {
+  metadata            = {
     "ssh_authorized_keys" = var.ssh_authorized_keys
   }
-  shape = "VM.Standard.A1.Flex"
+  shape               = "VM.Standard.A1.Flex"
   shape_config {
     memory_in_gbs = var.memory_in_gbs
     ocpus         = var.ocpus
@@ -52,4 +46,6 @@ resource "oci_core_instance" "generated_oci_core_instance" {
     source_id   = var.image_source_ocid
     source_type = "image"
   }
+
+  depends_on = [oci_core_subnet.cluster_subnet]
 }
