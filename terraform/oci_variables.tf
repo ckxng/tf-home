@@ -26,8 +26,8 @@ variable "oci_create_compartment" {
 
 variable "oci_compartment_ocid" {
   description = "The OCID of the compartment to attach resources to.  Ignored if oci_create_compartment is true."
-  type    = string
-  default = ""
+  type        = string
+  default     = ""
 }
 
 variable "oci_compartment_name" {
@@ -44,22 +44,21 @@ variable "ssh_authorized_keys" {
   type = string
 }
 
-variable "oci_a1_instance_count" {
-  type    = number
-  default = 3
-}
-
-variable "oci_a1_cluster_node_name_prefix" {
-  type    = string
-  default = "cluster-a1-node-"
-}
-
-variable "oci_a1_memory_in_gbs" {
-  type    = string
-  default = "6"
-}
-
-variable "oci_a1_ocpus" {
-  type    = string
-  default = "1"
+variable "oci_compute_pools" {
+  type    = list(object({
+    shape                    = string
+    instance_count           = number
+    cluster_node_name_prefix = string
+    memory_in_gbs            = string
+    ocpus                    = string
+  }))
+  default = [
+    {
+      shape                    = "VM.Standard.A1.Flex"
+      instance_count           = 3
+      cluster_node_name_prefix = "cluster-a1-node-"
+      memory_in_gbs            = 6
+      ocpus                    = 1
+    }
+  ]
 }

@@ -1,5 +1,5 @@
 variable "compartment_ocid" {
-  type    = string
+  type = string
 }
 
 variable "create_vcn" {
