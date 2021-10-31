@@ -9,7 +9,7 @@ locals {
     {
       shape                    = "VM.Standard.A1.Flex"
       instance_count           = var.oci_a1_instance_count
-      cluster_node_name_prefix = "cluster-a1-node-"
+      cluster_node_name_prefix = var.oci_a1_cluster_node_name_prefix
       ocpus                    = var.oci_a1_ocpus
       memory_in_gbs            = var.oci_a1_memory_in_gbs
     }

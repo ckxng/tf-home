@@ -26,6 +26,7 @@ No requirements.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_oci_a1_cluster_node_name_prefix"></a> [oci\_a1\_cluster\_node\_name\_prefix](#input\_oci\_a1\_cluster\_node\_name\_prefix) | n/a | `string` | `"cluster-a1-node-"` | no |
 | <a name="input_oci_a1_instance_count"></a> [oci\_a1\_instance\_count](#input\_oci\_a1\_instance\_count) | n/a | `number` | `3` | no |
 | <a name="input_oci_a1_memory_in_gbs"></a> [oci\_a1\_memory\_in\_gbs](#input\_oci\_a1\_memory\_in\_gbs) | n/a | `string` | `"6"` | no |
 | <a name="input_oci_a1_ocpus"></a> [oci\_a1\_ocpus](#input\_oci\_a1\_ocpus) | n/a | `string` | `"1"` | no |

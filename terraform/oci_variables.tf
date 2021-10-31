@@ -49,6 +49,11 @@ variable "oci_a1_instance_count" {
   default = 3
 }
 
+variable "oci_a1_cluster_node_name_prefix" {
+  type    = string
+  default = "cluster-a1-node-"
+}
+
 variable "oci_a1_memory_in_gbs" {
   type    = string
   default = "6"
