@@ -1,19 +1,17 @@
 resource "oci_core_vcn" "cluster_vcn" {
   count = var.create_vcn ? 1 : 0
 
-  compartment_id = var.create_compartment ? oci_identity_compartment.compartment[0].id : var.compartment_ocid
+  compartment_id = var.compartment_ocid
   cidr_blocks    = var.vcn_cidr_blocks
   dns_label      = var.vcn_dns_label
   display_name   = var.vcn_dns_label
   is_ipv6enabled = true
-
-  depends_on = [oci_identity_compartment.compartment]
 }
 
 resource "oci_core_internet_gateway" "internet_gateway" {
   count = var.create_vcn ? 1 : 0
 
-  compartment_id = var.create_compartment ? oci_identity_compartment.compartment[0].id : var.compartment_ocid
+  compartment_id = var.compartment_ocid
   enabled        = true
   display_name   = "gw"
 
@@ -24,7 +22,7 @@ resource "oci_core_internet_gateway" "internet_gateway" {
 resource "oci_core_route_table" "route_table" {
   count = var.create_vcn ? 1 : 0
 
-  compartment_id = var.create_compartment ? oci_identity_compartment.compartment[0].id : var.compartment_ocid
+  compartment_id = var.compartment_ocid
   display_name   = "default routes"
 
   route_rules {
@@ -47,7 +45,7 @@ resource "oci_core_route_table" "route_table" {
 resource "oci_core_subnet" "cluster_subnet" {
   count = var.create_subnet ? 1 : 0
 
-  compartment_id = var.create_compartment ? oci_identity_compartment.compartment[0].id : var.compartment_ocid
+  compartment_id = var.compartment_ocid
   cidr_block     = var.subnet_cidr_block
   ipv6cidr_block = format("%s%s::/64", regex("(\\w+:\\w+:\\w+:\\w*)00:", oci_core_vcn.cluster_vcn[0].ipv6cidr_blocks[0])[0], var.subnet_ipv6_subnet)
   dns_label      = var.subnet_dns_label

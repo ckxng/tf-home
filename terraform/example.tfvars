@@ -1,0 +1,5 @@
+oci_tenancy_ocid    = "ocid1.tenancy.oc1..aaaaaaaa...2ca3kmna"
+oci_user_ocid       = "ocid1.user.oc1..aaaaaaaa...t4omojtq"
+oci_key_fingerprint = "5c:b6:...:ad:e4"
+oci_private_key     = "SENSITIVE"
+ssh_authorized_keys = "ssh-rsa AAAAB3Nz...9ruWvw== keyname"

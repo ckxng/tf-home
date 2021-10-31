@@ -1,3 +1,7 @@
+variable "compartment_ocid" {
+  type    = string
+}
+
 variable "create_vcn" {
   type    = bool
   default = true

@@ -1,3 +1,12 @@
+variable "compartment_ocid" {
+  type = string
+}
+
+variable "subnet_ocid" {
+  description = "The OCID of the subnet to attach interfaces to.  Ignored if create_subnet is true."
+  type        = string
+}
+
 variable "availability_domain" {
   type    = string
   default = "hoEM:PHX-AD-2"
@@ -30,4 +39,9 @@ variable "ocpus" {
 
 variable "ssh_authorized_keys" {
   type = string
+}
+
+variable "shape" {
+  type    = string
+  default = "VM.Standard.A1.Flex"
 }

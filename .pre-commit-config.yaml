@@ -4,3 +4,7 @@ repos:
     hooks:
       - id: terraform-docs-go
         args: [ "markdown", "table", "--output-file", "README.md", "./terraform/" ]
+      - id: terraform-docs-go
+        args: [ "markdown", "table", "--output-file", "README.md", "./modules/ckxng_oci_network/" ]
+      - id: terraform-docs-go
+        args: [ "markdown", "table", "--output-file", "README.md", "./modules/ckxng_oci_compute/" ]
