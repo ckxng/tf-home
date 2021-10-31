@@ -49,3 +49,17 @@ resource "oci_core_instance" "cluster_instances" {
 
   depends_on = [oci_core_subnet.cluster_subnet]
 }
+
+data "oci_core_vnic_attachments" "cluster_vnics" {
+  compartment_id = var.create_compartment ? oci_identity_compartment.compartment[0].id : var.compartment_ocid
+
+  depends_on = [oci_core_instance.cluster_instances]
+}
+
+resource "oci_core_ipv6" "ipv6_addresses" {
+  count = length(oci_core_instance.cluster_instances)
+
+  vnic_id = [for vnic in data.oci_core_vnic_attachments.cluster_vnics.vnic_attachments : vnic.vnic_id if vnic.instance_id == oci_core_instance.cluster_instances[count.index].id][0]
+
+  depends_on = [data.oci_core_vnic_attachments.cluster_vnics]
+}

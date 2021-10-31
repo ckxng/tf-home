@@ -49,7 +49,7 @@ resource "oci_core_subnet" "cluster_subnet" {
 
   compartment_id = var.create_compartment ? oci_identity_compartment.compartment[0].id : var.compartment_ocid
   cidr_block     = var.subnet_cidr_block
-  ipv6cidr_block = format("%s%s::/64",regex("(\\w+:\\w+:\\w+:\\w*)00:",oci_core_vcn.cluster_vcn[0].ipv6cidr_blocks[0])[0], var.subnet_ipv6_subnet)
+  ipv6cidr_block = format("%s%s::/64", regex("(\\w+:\\w+:\\w+:\\w*)00:", oci_core_vcn.cluster_vcn[0].ipv6cidr_blocks[0])[0], var.subnet_ipv6_subnet)
   dns_label      = var.subnet_dns_label
 
   vcn_id     = var.create_vcn ? oci_core_vcn.cluster_vcn[0].id : var.vcn_ocid
