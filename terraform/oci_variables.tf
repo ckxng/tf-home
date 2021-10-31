@@ -46,19 +46,19 @@ variable "ssh_authorized_keys" {
 
 variable "oci_compute_pools" {
   type    = list(object({
-    shape                    = string
-    instance_count           = number
-    cluster_node_name_prefix = string
-    memory_in_gbs            = string
-    ocpus                    = string
+    shape          = string
+    instance_count = number
+    cluster_name   = string
+    memory_in_gbs  = string
+    ocpus          = string
   }))
   default = [
     {
-      shape                    = "VM.Standard.A1.Flex"
-      instance_count           = 3
-      cluster_node_name_prefix = "cluster-a1-node-"
-      memory_in_gbs            = 6
-      ocpus                    = 1
+      shape          = "VM.Standard.A1.Flex"
+      instance_count = 3
+      cluster_name   = "cluster-a1"
+      memory_in_gbs  = 6
+      ocpus          = 1
     }
   ]
 }

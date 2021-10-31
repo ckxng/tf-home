@@ -12,9 +12,9 @@ variable "availability_domain" {
   default = "hoEM:PHX-AD-2"
 }
 
-variable "cluster_node_name_prefix" {
+variable "cluster_name" {
   type    = string
-  default = "cluster-node-"
+  default = "cluster"
 }
 
 variable "instance_count" {
@@ -28,13 +28,13 @@ variable "image_source_ocid" {
 }
 
 variable "memory_in_gbs" {
-  type    = string
-  default = "6"
+  type    = number
+  default = 6
 }
 
 variable "ocpus" {
-  type    = string
-  default = "1"
+  type    = number
+  default = 1
 }
 
 variable "ssh_authorized_keys" {

@@ -8,12 +8,12 @@ module "ckxng_oci_compute" {
   count  = length(var.oci_compute_pools)
   source = "../modules/ckxng_oci_compute"
 
-  compartment_ocid         = var.oci_create_compartment ? oci_identity_compartment.compartment[0].id : var.oci_compartment_ocid
-  subnet_ocid              = module.ckxng_oci_network.subnet_ocid
-  ssh_authorized_keys      = var.ssh_authorized_keys
-  shape                    = var.oci_compute_pools[count.index].shape
-  instance_count           = var.oci_compute_pools[count.index].instance_count
-  cluster_node_name_prefix = var.oci_compute_pools[count.index].cluster_node_name_prefix
-  ocpus                    = var.oci_compute_pools[count.index].ocpus
-  memory_in_gbs            = var.oci_compute_pools[count.index].memory_in_gbs
+  compartment_ocid    = var.oci_create_compartment ? oci_identity_compartment.compartment[0].id : var.oci_compartment_ocid
+  subnet_ocid         = module.ckxng_oci_network.subnet_ocid
+  ssh_authorized_keys = var.ssh_authorized_keys
+  shape               = var.oci_compute_pools[count.index].shape
+  instance_count      = var.oci_compute_pools[count.index].instance_count
+  cluster_name        = var.oci_compute_pools[count.index].cluster_name
+  ocpus               = var.oci_compute_pools[count.index].ocpus
+  memory_in_gbs       = var.oci_compute_pools[count.index].memory_in_gbs
 }

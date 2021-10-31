@@ -23,13 +23,21 @@ resource "oci_core_instance" "cluster_instances" {
   availability_domain = var.availability_domain
   compartment_id      = var.compartment_ocid
   create_vnic_details {
-    display_name              = format("%s%02d", var.cluster_node_name_prefix, count.index)
-    hostname_label            = format("%s%02d", var.cluster_node_name_prefix, count.index)
+    display_name              = format("%s-%02d", var.cluster_name, count.index)
+    hostname_label            = format("%s-%02d", var.cluster_name, count.index)
     assign_private_dns_record = "true"
     assign_public_ip          = "true"
     subnet_id                 = var.subnet_ocid
+    freeform_tags             = {
+      Cluster  = var.cluster_name
+      Instance = format("%s-%02d", var.cluster_name, count.index)
+    }
   }
-  display_name        = format("%s%02d", var.cluster_node_name_prefix, count.index)
+  display_name        = format("%s-%02d", var.cluster_name, count.index)
+  freeform_tags       = {
+    Cluster  = var.cluster_name
+    Instance = format("%s-%02d", var.cluster_name, count.index)
+  }
   instance_options {
     are_legacy_imds_endpoints_disabled = "false"
   }
