@@ -27,7 +27,7 @@ variable "oci_create_compartment" {
 variable "oci_compartment_ocid" {
   description = "The OCID of the compartment to attach resources to.  Ignored if oci_create_compartment is true."
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "oci_compartment_name" {

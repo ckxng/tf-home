@@ -28,7 +28,7 @@ No requirements.
 |------|-------------|------|---------|:--------:|
 | <a name="input_oci_compartment_description"></a> [oci\_compartment\_description](#input\_oci\_compartment\_description) | n/a | `string` | `"default description"` | no |
 | <a name="input_oci_compartment_name"></a> [oci\_compartment\_name](#input\_oci\_compartment\_name) | n/a | `string` | `"tfdeploy"` | no |
-| <a name="input_oci_compartment_ocid"></a> [oci\_compartment\_ocid](#input\_oci\_compartment\_ocid) | The OCID of the compartment to attach resources to.  Ignored if oci\_create\_compartment is true. | `string` | `""` | no |
+| <a name="input_oci_compartment_ocid"></a> [oci\_compartment\_ocid](#input\_oci\_compartment\_ocid) | The OCID of the compartment to attach resources to.  Ignored if oci\_create\_compartment is true. | `string` | `null` | no |
 | <a name="input_oci_compute_pools"></a> [oci\_compute\_pools](#input\_oci\_compute\_pools) | n/a | <pre>list(object({<br>    shape          = string<br>    instance_count = number<br>    cluster_name   = string<br>    memory_in_gbs  = string<br>    ocpus          = string<br>    user_data      = string<br>  }))</pre> | <pre>[<br>  {<br>    "cluster_name": "cluster-a1",<br>    "instance_count": 3,<br>    "memory_in_gbs": 6,<br>    "ocpus": 1,<br>    "shape": "VM.Standard.A1.Flex",<br>    "user_data": null<br>  }<br>]</pre> | no |
 | <a name="input_oci_create_compartment"></a> [oci\_create\_compartment](#input\_oci\_create\_compartment) | n/a | `bool` | `true` | no |
 | <a name="input_oci_key_fingerprint"></a> [oci\_key\_fingerprint](#input\_oci\_key\_fingerprint) | n/a | `string` | n/a | yes |
