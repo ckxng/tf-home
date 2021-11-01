@@ -51,6 +51,7 @@ variable "oci_compute_pools" {
     cluster_name   = string
     memory_in_gbs  = string
     ocpus          = string
+    user_data      = string
   }))
   default = [
     {
@@ -59,6 +60,7 @@ variable "oci_compute_pools" {
       cluster_name   = "cluster-a1"
       memory_in_gbs  = 6
       ocpus          = 1
+      user_data      = null
     }
   ]
 }

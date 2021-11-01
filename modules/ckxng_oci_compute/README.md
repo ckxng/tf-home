@@ -34,7 +34,8 @@ No modules.
 | <a name="input_ocpus"></a> [ocpus](#input\_ocpus) | n/a | `number` | `1` | no |
 | <a name="input_shape"></a> [shape](#input\_shape) | n/a | `string` | `"VM.Standard.A1.Flex"` | no |
 | <a name="input_ssh_authorized_keys"></a> [ssh\_authorized\_keys](#input\_ssh\_authorized\_keys) | n/a | `string` | n/a | yes |
-| <a name="input_subnet_ocid"></a> [subnet\_ocid](#input\_subnet\_ocid) | The OCID of the subnet to attach interfaces to.  Ignored if create\_subnet is true. | `string` | n/a | yes |
+| <a name="input_subnet_ocid"></a> [subnet\_ocid](#input\_subnet\_ocid) | The OCID of the subnet to attach interfaces to. | `string` | n/a | yes |
+| <a name="input_user_data"></a> [user\_data](#input\_user\_data) | n/a | `string` | `null` | no |
 
 ## Outputs
 

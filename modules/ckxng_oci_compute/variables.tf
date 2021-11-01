@@ -3,7 +3,7 @@ variable "compartment_ocid" {
 }
 
 variable "subnet_ocid" {
-  description = "The OCID of the subnet to attach interfaces to.  Ignored if create_subnet is true."
+  description = "The OCID of the subnet to attach interfaces to."
   type        = string
 }
 
@@ -44,4 +44,9 @@ variable "ssh_authorized_keys" {
 variable "shape" {
   type    = string
   default = "VM.Standard.A1.Flex"
+}
+
+variable "user_data" {
+  type    = string
+  default = null
 }

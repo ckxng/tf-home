@@ -42,7 +42,8 @@ resource "oci_core_instance" "cluster_instances" {
     are_legacy_imds_endpoints_disabled = "false"
   }
   metadata            = {
-    "ssh_authorized_keys" = var.ssh_authorized_keys
+    ssh_authorized_keys = var.ssh_authorized_keys
+    user_data           = var.user_data
   }
   shape               = var.shape
   shape_config {
@@ -67,5 +68,5 @@ resource "oci_core_ipv6" "ipv6_addresses" {
 
   vnic_id = [for vnic in data.oci_core_vnic_attachments.cluster_vnics.vnic_attachments : vnic.vnic_id if vnic.instance_id == oci_core_instance.cluster_instances[count.index].id][0]
 
-  depends_on = [data.oci_core_vnic_attachments.cluster_vnics]
+  depends_on = [oci_core_instance.cluster_instances, data.oci_core_vnic_attachments.cluster_vnics]
 }

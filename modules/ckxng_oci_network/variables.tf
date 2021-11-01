@@ -10,7 +10,7 @@ variable "create_vcn" {
 variable "vcn_ocid" {
   description = "The OCID of the vcn to attach subnets to.  Ignored if create_vcn is true."
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "vcn_dns_label" {
@@ -31,7 +31,7 @@ variable "create_subnet" {
 variable "subnet_ocid" {
   description = "The OCID of the subnet to attach interfaces to.  Ignored if create_subnet is true."
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "subnet_dns_label" {

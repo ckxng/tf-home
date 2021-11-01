@@ -16,4 +16,5 @@ module "ckxng_oci_compute" {
   cluster_name        = var.oci_compute_pools[count.index].cluster_name
   ocpus               = var.oci_compute_pools[count.index].ocpus
   memory_in_gbs       = var.oci_compute_pools[count.index].memory_in_gbs
+  user_data           = var.oci_compute_pools[count.index].user_data
 }
