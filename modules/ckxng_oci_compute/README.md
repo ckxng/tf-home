@@ -37,7 +37,7 @@ No modules.
 | <a name="input_memory_in_gbs"></a> [memory\_in\_gbs](#input\_memory\_in\_gbs) | The amount of memory to assign to each instance (in GB) | `number` | `6` | no |
 | <a name="input_ocpus"></a> [ocpus](#input\_ocpus) | The number of OCPUs to assign to each instance | `number` | `1` | no |
 | <a name="input_shape"></a> [shape](#input\_shape) | The shape of the instance to deploy | `string` | `"VM.Standard.A1.Flex"` | no |
-| <a name="input_ssh_authorized_keys"></a> [ssh\_authorized\_keys](#input\_ssh\_authorized\_keys) | An SSH public key to be deployed to the main user of the system | `string` | n/a | yes |
+| <a name="input_ssh_authorized_keys"></a> [ssh\_authorized\_keys](#input\_ssh\_authorized\_keys) | A string containing one or more SSH public keys to be deployed to the main user of the system | `string` | n/a | yes |
 | <a name="input_subnet_ocid"></a> [subnet\_ocid](#input\_subnet\_ocid) | The OCID of the subnet to attach interfaces to. | `string` | n/a | yes |
 | <a name="input_user_data"></a> [user\_data](#input\_user\_data) | A user\_data string to be passed to cloud\_init | `string` | `null` | no |
 

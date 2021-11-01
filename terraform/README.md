@@ -41,7 +41,7 @@ No requirements.
 | <a name="input_oci_region_key"></a> [oci\_region\_key](#input\_oci\_region\_key) | An OCI region key.  (Three letters - "phx" not "us-phoenix-1") | `string` | `"phx"` | no |
 | <a name="input_oci_tenancy_ocid"></a> [oci\_tenancy\_ocid](#input\_oci\_tenancy\_ocid) | OCID of your tenancy. | `string` | n/a | yes |
 | <a name="input_oci_user_ocid"></a> [oci\_user\_ocid](#input\_oci\_user\_ocid) | OCID of the user calling the API. | `string` | n/a | yes |
-| <a name="input_ssh_authorized_keys"></a> [ssh\_authorized\_keys](#input\_ssh\_authorized\_keys) | An SSH public key to be deployed to the main user of the system | `string` | n/a | yes |
+| <a name="input_ssh_authorized_keys"></a> [ssh\_authorized\_keys](#input\_ssh\_authorized\_keys) | A string containing one or more SSH public keys to be deployed to the main user of the system | `string` | n/a | yes |
 
 ## Outputs
 
