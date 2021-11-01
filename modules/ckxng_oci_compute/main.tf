@@ -1,3 +1,6 @@
+# Create a sequence of compute instances
+# IPv6 is not supported at launch, so IPv6 addresses must be attached later
+# https://registry.terraform.io/providers/hashicorp/oci/latest/docs/resources/core_instance
 resource "oci_core_instance" "cluster_instances" {
   count = var.instance_count
 
@@ -57,12 +60,16 @@ resource "oci_core_instance" "cluster_instances" {
   }
 }
 
+# Retrieve the list of vnic attachments from the instances created above
+# https://registry.terraform.io/providers/hashicorp/oci/latest/docs/data-sources/core_vnic_attachments
 data "oci_core_vnic_attachments" "cluster_vnics" {
   compartment_id = var.compartment_ocid
 
   depends_on = [oci_core_instance.cluster_instances]
 }
 
+# Attach automatically generated IPv6 addresses to the instances above
+# https://registry.terraform.io/providers/hashicorp/oci/latest/docs/resources/core_ipv6
 resource "oci_core_ipv6" "ipv6_addresses" {
   count = length(oci_core_instance.cluster_instances)
 

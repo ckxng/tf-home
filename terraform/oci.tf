@@ -1,9 +1,13 @@
+# Create the network in the compartment specified
+# https://github.com/ckxng/tf-home/tree/main/modules/ckxng_oci_network
 module "ckxng_oci_network" {
   source = "../modules/ckxng_oci_network"
 
   compartment_ocid = var.oci_create_compartment ? oci_identity_compartment.compartment[0].id : var.oci_compartment_ocid
 }
 
+# Create one or more clusters of instances in the subnet created above
+# https://github.com/ckxng/tf-home/tree/main/modules/ckxng_oci_compute
 module "ckxng_oci_compute" {
   count  = length(var.oci_compute_pools)
   source = "../modules/ckxng_oci_compute"

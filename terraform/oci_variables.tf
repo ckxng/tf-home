@@ -1,27 +1,33 @@
 variable "oci_tenancy_ocid" {
-  type = string
+  description = "OCID of your tenancy."
+  type        = string
 }
 
 variable "oci_user_ocid" {
-  type = string
+  description = "OCID of the user calling the API."
+  type        = string
 }
 
 variable "oci_key_fingerprint" {
-  type = string
+  description = "Fingerprint for the key pair being used."
+  type        = string
 }
 
 variable "oci_private_key" {
-  type = string
+  description = "The contents of the private key file."
+  type        = string
 }
 
 variable "oci_region_key" {
-  type    = string
-  default = "phx"
+  description = "An OCI region key.  (Three letters - \"phx\" not \"us-phoenix-1\")"
+  type        = string
+  default     = "phx"
 }
 
 variable "oci_create_compartment" {
-  type    = bool
-  default = true
+  description = "Whether a compartment should be created for this deployment"
+  type        = bool
+  default     = true
 }
 
 variable "oci_compartment_ocid" {
@@ -31,21 +37,25 @@ variable "oci_compartment_ocid" {
 }
 
 variable "oci_compartment_name" {
-  type    = string
-  default = "tfdeploy"
+  description = "The name of for the created compartment"
+  type        = string
+  default     = "tfdeploy"
 }
 
 variable "oci_compartment_description" {
-  type    = string
-  default = "default description"
+  description = "The description for the created compartment"
+  type        = string
+  default     = "default description"
 }
 
 variable "ssh_authorized_keys" {
-  type = string
+  description = "An SSH public key to be deployed to the main user of the system"
+  type        = string
 }
 
 variable "oci_compute_pools" {
-  type    = list(object({
+  description = "A list of objects representing clusters of instances to deploy"
+  type        = list(object({
     shape          = string
     instance_count = number
     cluster_name   = string
@@ -53,7 +63,7 @@ variable "oci_compute_pools" {
     ocpus          = string
     user_data      = string
   }))
-  default = [
+  default     = [
     {
       shape          = "VM.Standard.A1.Flex"
       instance_count = 3

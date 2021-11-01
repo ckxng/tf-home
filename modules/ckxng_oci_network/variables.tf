@@ -1,10 +1,12 @@
 variable "compartment_ocid" {
-  type = string
+  description = "The OCID of the compartment the network should be created in"
+  type        = string
 }
 
 variable "create_vcn" {
-  type    = bool
-  default = true
+  description = "Whether a vcn should be created"
+  type        = bool
+  default     = true
 }
 
 variable "vcn_ocid" {
@@ -14,18 +16,21 @@ variable "vcn_ocid" {
 }
 
 variable "vcn_dns_label" {
-  type    = string
-  default = "vcn"
+  description = "The DNS label to assign to the vcn (results in \"VCNLABEL.oraclevcn.com\")"
+  type        = string
+  default     = "vcn"
 }
 
 variable "vcn_cidr_blocks" {
-  type    = list(string)
-  default = ["10.0.0.0/16"]
+  description = "The IPv4 CIDR blocks to include in the vcn"
+  type        = list(string)
+  default     = ["10.0.0.0/16"]
 }
 
 variable "create_subnet" {
-  type    = bool
-  default = true
+  description = "Whether a subnet should be created.  Ignored if create_vcn is false."
+  type        = bool
+  default     = true
 }
 
 variable "subnet_ocid" {
@@ -35,13 +40,15 @@ variable "subnet_ocid" {
 }
 
 variable "subnet_dns_label" {
-  type    = string
-  default = "subnet"
+  description = "The DNS label to assign to the subnet (results in \"SUBNETLABEL.VCNLABEL.oraclevcn.com\")"
+  type        = string
+  default     = "subnet"
 }
 
 variable "subnet_cidr_block" {
-  type    = string
-  default = "10.0.0.0/24"
+  description = "The IPv4 CIDR block to use for the created subnet"
+  type        = string
+  default     = "10.0.0.0/24"
 }
 
 variable "subnet_ipv6_subnet" {

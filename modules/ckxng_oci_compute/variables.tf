@@ -1,5 +1,6 @@
 variable "compartment_ocid" {
-  type = string
+  description = "The OCID of the compartment interfaces should be created in"
+  type        = string
 }
 
 variable "subnet_ocid" {
@@ -8,45 +9,54 @@ variable "subnet_ocid" {
 }
 
 variable "availability_domain" {
-  type    = string
-  default = "hoEM:PHX-AD-2"
+  description = "The availability domain to create instances in"
+  type        = string
+  default     = "hoEM:PHX-AD-2"
 }
 
 variable "cluster_name" {
-  type    = string
-  default = "cluster"
+  description = "The cluster name which is used to create the instance labels (\"CLUSTERNAME-##\")"
+  type        = string
+  default     = "cluster"
 }
 
 variable "instance_count" {
-  type    = number
-  default = 3
+  description = "How many instances to create"
+  type        = number
+  default     = 3
 }
 
 variable "image_source_ocid" {
-  type    = string
-  default = "ocid1.image.oc1.phx.aaaaaaaa3nsfzlvkvrfug4xby77srfr43iinfkw3clur5izvlnqtxqdyj5sq" # Ubuntu 20.4
+  description = "The OCID of the image to deploy.  Defaults to Ubuntu 20.4"
+  type        = string
+  default     = "ocid1.image.oc1.phx.aaaaaaaa3nsfzlvkvrfug4xby77srfr43iinfkw3clur5izvlnqtxqdyj5sq" # Ubuntu 20.4
 }
 
 variable "memory_in_gbs" {
-  type    = number
-  default = 6
+  description = "The amount of memory to assign to each instance (in GB)"
+  type        = number
+  default     = 6
 }
 
 variable "ocpus" {
-  type    = number
-  default = 1
+  description = "The number of OCPUs to assign to each instance"
+  type        = number
+  default     = 1
 }
 
 variable "ssh_authorized_keys" {
-  type = string
+  description = "An SSH public key to be deployed to the main user of the system"
+  type        = string
 }
 
 variable "shape" {
-  type    = string
-  default = "VM.Standard.A1.Flex"
+  description = "The shape of the instance to deploy"
+  type        = string
+  default     = "VM.Standard.A1.Flex"
 }
 
 variable "user_data" {
-  type    = string
-  default = null
+  description = "A user_data string to be passed to cloud_init"
+  type        = string
+  default     = null
 }

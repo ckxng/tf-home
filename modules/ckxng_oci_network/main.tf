@@ -1,3 +1,5 @@
+# Optionally create the vcn, with IPv6 enabled
+# https://registry.terraform.io/providers/hashicorp/oci/latest/docs/resources/core_vcn
 resource "oci_core_vcn" "cluster_vcn" {
   count = var.create_vcn ? 1 : 0
 
@@ -8,6 +10,8 @@ resource "oci_core_vcn" "cluster_vcn" {
   is_ipv6enabled = true
 }
 
+# Create an internet gateway if we are creating a vcn
+# https://registry.terraform.io/providers/hashicorp/oci/latest/docs/resources/core_internet_gateway
 resource "oci_core_internet_gateway" "internet_gateway" {
   count = var.create_vcn ? 1 : 0
 
@@ -19,6 +23,8 @@ resource "oci_core_internet_gateway" "internet_gateway" {
   depends_on = [oci_core_vcn.cluster_vcn]
 }
 
+# Create a route table, including rules for IPv6 if we are creating a vcn
+# https://registry.terraform.io/providers/hashicorp/oci/latest/docs/resources/core_route_table
 resource "oci_core_route_table" "route_table" {
   count = var.create_vcn ? 1 : 0
 
@@ -42,8 +48,10 @@ resource "oci_core_route_table" "route_table" {
   depends_on = [oci_core_internet_gateway.internet_gateway]
 }
 
+# Optionally create a subnet with IPv6, requires that we created a vcn as well
+# https://registry.terraform.io/providers/hashicorp/oci/latest/docs/resources/core_subnet
 resource "oci_core_subnet" "cluster_subnet" {
-  count = var.create_subnet ? 1 : 0
+  count = var.create_vcn && var.create_subnet ? 1 : 0
 
   compartment_id = var.compartment_ocid
   cidr_block     = var.subnet_cidr_block
@@ -54,6 +62,8 @@ resource "oci_core_subnet" "cluster_subnet" {
   depends_on = [oci_core_vcn.cluster_vcn]
 }
 
+# Attach the routing table to the subnet we created
+# https://registry.terraform.io/providers/hashicorp/oci/latest/docs/resources/core_route_table_attachment
 resource "oci_core_route_table_attachment" "subnet_route_attachment" {
   count = var.create_vcn && var.create_subnet ? 1 : 0
 
