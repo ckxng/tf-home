@@ -46,7 +46,7 @@ resource "oci_core_instance" "cluster_instances" {
   }
   metadata            = {
     ssh_authorized_keys = var.ssh_authorized_keys
-    user_data           = var.user_data
+    user_data           = base64gzip(var.user_data)
   }
   shape               = var.shape
   shape_config {

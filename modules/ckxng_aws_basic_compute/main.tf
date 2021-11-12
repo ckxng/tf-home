@@ -20,7 +20,7 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "instance" {
     ami           = data.aws_ami.ubuntu.id
     instance_type = var.aws_instance_type
-    user_data     = base64gzip(var.instance_user_data)
+    user_data     = base64gzip(var.user_data)
     key_name      = aws_key_pair.ssh_key.key_name
 
     # Optional
@@ -40,5 +40,5 @@ resource "aws_eip" "eip" {
 
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/key_pair
 resource "aws_key_pair" "ssh_key"{
-    public_key = var.ssh_public_key
+    public_key = var.ssh_authorized_keys
 }

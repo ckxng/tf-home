@@ -32,8 +32,8 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_aws_instance_type"></a> [aws\_instance\_type](#input\_aws\_instance\_type) | AWS instance type to deploy | `string` | `"t3.medium"` | no |
 | <a name="input_aws_subnet_id"></a> [aws\_subnet\_id](#input\_aws\_subnet\_id) | AWS Subnet ID to deploy instances into.  Uses default Subnet of default VPC if not specified. | `string` | `null` | no |
-| <a name="input_instance_user_data"></a> [instance\_user\_data](#input\_instance\_user\_data) | cloudinit user\_data to provide to instances on creation | `string` | `""` | no |
-| <a name="input_ssh_public_key"></a> [ssh\_public\_key](#input\_ssh\_public\_key) | The SSH public key to be added to the authorized\_keys file | `string` | n/a | yes |
+| <a name="input_ssh_authorized_keys"></a> [ssh\_authorized\_keys](#input\_ssh\_authorized\_keys) | A string containing one or more SSH public keys to be deployed to the main user of the system | `string` | n/a | yes |
+| <a name="input_user_data"></a> [user\_data](#input\_user\_data) | A user\_data string to be passed to cloud\_init | `string` | `null` | no |
 | <a name="input_vpc_security_group_ids"></a> [vpc\_security\_group\_ids](#input\_vpc\_security\_group\_ids) | Defines the security group to attach the instance(s) to.  Uses default SG of default VPC if not specified. | `set(string)` | `null` | no |
 
 ## Outputs

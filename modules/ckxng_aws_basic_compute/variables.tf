@@ -16,13 +16,13 @@ variable "aws_instance_type" {
     default     = "t3.medium"
 }
 
-variable "instance_user_data" {
-    description = "cloudinit user_data to provide to instances on creation"
+variable "user_data" {
+    description = "A user_data string to be passed to cloud_init"
     type        = string
-    default     = ""
+    default     = null
 }
 
-variable "ssh_public_key" {
-    description = "The SSH public key to be added to the authorized_keys file"
+variable "ssh_authorized_keys" {
+    description = "A string containing one or more SSH public keys to be deployed to the main user of the system"
     type        = string
 }
