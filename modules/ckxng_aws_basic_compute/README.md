@@ -1,4 +1,4 @@
-# terraform
+# ckxng_aws_basic_compute
 
 This module creates a single EC2 instance into an existing VPC and subnet
 
