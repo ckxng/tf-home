@@ -8,3 +8,5 @@ repos:
         args: [ "markdown", "table", "--output-file", "README.md", "./modules/ckxng_oci_network/" ]
       - id: terraform-docs-go
         args: [ "markdown", "table", "--output-file", "README.md", "./modules/ckxng_oci_compute/" ]
+      - id: terraform-docs-go
+        args: [ "markdown", "table", "--output-file", "README.md", "./modules/ckxng_aws_basic_compute/" ]
